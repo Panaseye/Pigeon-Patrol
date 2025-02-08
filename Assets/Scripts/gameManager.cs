@@ -9,6 +9,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject shopScreen; 
     [SerializeField] Button shopButton;
     private bool isPaused = false;
+
+    [SerializeField] Terrain terrain;
+    [SerializeField] Terrain terrain2;
+    [SerializeField] float speed;
     
 
     void Start()
@@ -31,6 +35,17 @@ public class gameManager : MonoBehaviour
         {
             ResumeGame();
             EnableShop();
+        }
+
+        terrain.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        terrain2.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (terrain.transform.position.x <= -1500)
+        {
+            terrain.transform.Translate(1995, 0 , 0);
+        }
+        if (terrain2.transform.position.x <= -1500)
+        {
+            terrain2.transform.Translate(1995, 0 , 0);
         }
     }
 
