@@ -6,6 +6,7 @@ TagManager:
   tags:
   - balloon
   - enemy
+  - House
   layers:
   - Default
   - TransparentFX
