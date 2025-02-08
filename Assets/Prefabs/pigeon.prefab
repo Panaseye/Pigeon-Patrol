@@ -123,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 10
   enemySpeed: 1.2
-  landYPos: 26.75
+  landYPos: 31.75
