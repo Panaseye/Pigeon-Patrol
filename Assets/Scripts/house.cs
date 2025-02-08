@@ -1,12 +1,19 @@
+using System.Collections;
 using NUnit.Framework.Constraints;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class house : MonoBehaviour
 {
 
     public float buoyancy;
+    public float speed;
+    public float maxHeight;
+    public PigeonCounter pigeonCounter;
+    public int pigeonCount;
 
     public string balloonTag = "balloon"; 
+    public string pigeonTag = "enemy";
     public float balloonBuoyancy = 5f;
     public float pigeonBuoyancy = -1f; 
     public float balloonAll;
@@ -23,11 +30,27 @@ public class house : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // buoyancy = pigeonAll + balloonAll;
-        if (buoyancy < 0)
-        {
-            gameObject.transform.Translate(gameObject.transform.position.x,(gameObject.transform.position.y + buoyancy) ,gameObject.transform.position.z ); 
-        }
+       pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
+buoyancy = pigeonAll + balloonAll;
+
+if (gameObject.transform.position.y <= maxHeight)
+{
+    // Calculate vertical movement based on buoyancy
+    float movementY =gameObject.transform.position.y + -(buoyancy * Time.deltaTime * speed);
+    Debug.Log(movementY);
+    
+    // Adjust vertical movement to not go below the maxHeight
+    if (gameObject.transform.position.y + movementY > maxHeight)
+    {
+        movementY = maxHeight - gameObject.transform.position.y;
+    }
+
+    // Apply the movement
+    gameObject.transform.Translate(
+        gameObject.transform.position.x,
+        movementY, 
+        gameObject.transform.position.z);
+}
     }    
 
     public void BalloonPoped()
@@ -42,10 +65,29 @@ private void UpdateBalloonCount()
     Debug.Log(balloonAll + " buoy " + balloonBuoyancy + " count " + balloonCount);
 }
 
+public void PigeonDead()
+{
+    StartCoroutine(DelayedPigeonCount());
+}
 
-            
-    // we can use this to count pigeons aswell, we just add a function like 
-    // for the baloons that will be triggered by the pigeon that is coming to settle
+private IEnumerator DelayedPigeonCount()
+{
+    yield return new WaitForEndOfFrame(); // Ensures Unity fully removes the object
+    
+    yield return null; 
+
+    pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
+}
+
+void OnPigeonCountReady(int count)
+{
+    pigeonCount = count;
+    Debug.Log("Stationary Pigeons: " + count);
+    pigeonAll = pigeonCount * pigeonBuoyancy;
+    Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
+}
+
+  
     public int CountAllChildrenWithTag(string targetTag, Transform parent)
     {
         int count = 0;

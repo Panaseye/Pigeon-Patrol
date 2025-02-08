@@ -32,8 +32,10 @@ public class playerController : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag(pigeonTag))
                 {
+                    Debug.Log("pigeonTag touched");
                     //send damage to pigeon if clicked
                     hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(10);
+                    house.PigeonDead();
                 }
             }
         }

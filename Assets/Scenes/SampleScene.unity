@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &151155722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151155723}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151155723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151155722}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7428293, y: 26.646, z: 0.976265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0040271967, y: 0.95647514, z: -0.29148743, w: 0.01320029}
-  m_LocalPosition: {x: 0.24, y: 2.96, z: 4.82}
+  m_LocalPosition: {x: 0.24, y: 2.67, z: 3.84}
   m_LocalScale: {x: 0.3090044, y: 0.3090044, z: 0.30900443}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -426,6 +457,73 @@ Transform:
   - {fileID: 2009749347}
   - {fileID: 1374161999}
   - {fileID: 1586757512}
+  m_Father: {fileID: 832626580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &563272530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 563272533}
+  - component: {fileID: 563272532}
+  - component: {fileID: 563272531}
+  m_Layer: 2
+  m_Name: pigeon Counte
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &563272531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563272530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e182597b6960d409f90689678b35740b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pigeonTag: enemy
+--- !u!65 &563272532
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563272530}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4286271, y: 2.3305025, z: 1.5187405}
+  m_Center: {x: -0.020877574, y: 0.6652522, z: -0.00066028873}
+--- !u!4 &563272533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563272530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 832626580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702178108
@@ -707,7 +805,7 @@ GameObject:
   - component: {fileID: 832626581}
   m_Layer: 0
   m_Name: house
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -801,6 +899,7 @@ Transform:
   m_Children:
   - {fileID: 466587297}
   - {fileID: 1310556743}
+  - {fileID: 563272533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &832626581
@@ -816,7 +915,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buoyancy: 0
+  pigeonCounter: {fileID: 563272531}
   balloonTag: balloon
+  pigeonTag: enemy
   balloonBuoyancy: 5
   pigeonBuoyancy: -1
   balloonAll: 0
@@ -1189,6 +1290,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124328853}
   m_CullTransparentMesh: 1
+--- !u!1 &1141699851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141699853}
+  - component: {fileID: 1141699852}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1141699852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141699851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d72c56c79059a34faa893f2499d267e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - {fileID: 11400000, guid: 9461b48540f0c6144b2d3949d1edbcff, type: 2}
+  timeBtwWaves: 2
+  spawnWaves: 1
+  maxBoundZ: 3.45
+  minBoundZ: -3.52
+  maxBoundY: 40
+  minBoundY: 35
+--- !u!4 &1141699853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141699851}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1310556742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,8 +1388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa21991f81cad46798979f2d90b5df4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 0}
   horRotationSpeed: 30
   verRotationSpeed: 30
+  zoomSpeed: 5
+  minZoom: 3.5
+  maxZoom: 20
   minVerticalAngle: -45
   maxVerticalAngle: 45
 --- !u!54 &1310556745
@@ -2213,3 +2370,5 @@ SceneRoots:
   - {fileID: 1010641142}
   - {fileID: 1978339376}
   - {fileID: 787770719}
+  - {fileID: 1141699853}
+  - {fileID: 151155723}

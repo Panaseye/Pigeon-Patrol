@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2328d563d9d63b84ab0ac9d1b88b645c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 20
+  enemyHealth: 10
   enemySpeed: 1.2
-  landYPos: 0.53
+  landYPos: 26.75
