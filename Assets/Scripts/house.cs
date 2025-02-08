@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class house : MonoBehaviour
 {
+    public gameManager gameManager;
 
     public float buoyancy;
     public float speed;
@@ -31,15 +32,15 @@ public class house : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
+       pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
         UpdateBalloonCount();
-        buoyancy = pigeonAll + balloonAll;
+    buoyancy = pigeonAll + balloonAll;
 
         Debug.Log("Balloon boyancy " + balloonAll);
         Debug.Log("Pigeon boyancy " + pigeonAll);
 
         if (gameObject.transform.position.y <= maxHeight )
-        {
+{
             // // Calculate vertical movement based on buoyancy
             // //float movementY =gameObject.transform.position.y + -(buoyancy * Time.deltaTime * speed);
             // float movementY = buoyancy * Time.deltaTime * speed;
@@ -48,7 +49,7 @@ public class house : MonoBehaviour
             // if(movementY>=0){totalMovementY = Mathf.Clamp(transform.position.y+movementY, transform.position.y , maxHeight) - transform.position.y ;}
             
             //  Debug.Log("Total Buoyancy movement " + totalMovementY);
-            
+    
             // // Adjust vertical movement to not go below the maxHeight
             // // if (gameObject.transform.position.y + movementY > maxHeight)
             // // {
@@ -72,51 +73,52 @@ public class house : MonoBehaviour
                 totalMovementY = Mathf.Clamp(transform.position.y+movementY, minHeight , transform.position.y) - transform.position.y;
             }
             // Debug.Log("Total Buoyancy movement " + totalMovementY);
-             
-             // Apply the movement
-             gameObject.transform.Translate(
-             gameObject.transform.position.x,
+
+    // Apply the movement
+    gameObject.transform.Translate(
+        gameObject.transform.position.x,
              totalMovementY, 
-             gameObject.transform.position.z);
+        gameObject.transform.position.z);
 
 
-        }
+}
     }    
 
     public void BalloonPoped()
-    {
-        Invoke(nameof(UpdateBalloonCount), 0.05f); // Small delay
-    }
+{
+    Invoke(nameof(UpdateBalloonCount), 0.05f); // Small delay
+}
 
-    private void UpdateBalloonCount()
-    {
-        int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
+private void UpdateBalloonCount()
+{
+    int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
        // Debug.Log("Balloon count: " + balloonCount);
-        balloonAll = balloonCount * balloonBuoyancy;
+    balloonAll = balloonCount * balloonBuoyancy;
        // Debug.Log(balloonAll + " buoy " + balloonBuoyancy + " count " + balloonCount);
-    }
+}
 
-    public void PigeonDead()
-    {
-        StartCoroutine(DelayedPigeonCount());
-    }
+public void PigeonDead()
+{
+    StartCoroutine(DelayedPigeonCount());
+    gameManager.feathers ++;
+}
 
-    private IEnumerator DelayedPigeonCount()
-    {
-        yield return new WaitForEndOfFrame(); // Ensures Unity fully removes the object
-        
-        yield return null; 
+private IEnumerator DelayedPigeonCount()
+{
+    yield return new WaitForEndOfFrame(); // Ensures Unity fully removes the object
+    
+    yield return null; 
 
-        pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
-    }
+    pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
+}
 
-    void OnPigeonCountReady(int count)
-    {
-        pigeonCount = count;
+void OnPigeonCountReady(int count)
+{
+    pigeonCount = count;
         //Debug.Log("Stationary Pigeons: " + count);
-        pigeonAll = pigeonCount * pigeonBuoyancy;
+    pigeonAll = pigeonCount * pigeonBuoyancy;
        // Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
-    }
+}
 
   
     public int CountAllChildrenWithTag(string targetTag, Transform parent)
