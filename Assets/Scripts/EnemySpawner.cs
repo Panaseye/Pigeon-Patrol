@@ -64,7 +64,6 @@ public class EnemySpawner : MonoBehaviour
         //clockwise defind spawn regions 0,1,2
         //left screen(0), top screen(1) , right screen(2)
         int spawnRegion = Random.Range(0,3);
-        Debug.Log(spawnRegion   );
         float spawnPosZ=0f;
         float spawnPosY=0f;
 

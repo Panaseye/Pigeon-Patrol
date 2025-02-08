@@ -1,28 +1,36 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject shopScreen; 
+    [SerializeField] Button shopButton;
     private bool isPaused = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+
     void Start()
     {
         pauseScreen.SetActive(false);
+        shopScreen.SetActive(false);
+        EnableShop();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
          if (Input.GetKeyDown(KeyCode.P) && !isPaused)
         {
             PauseGame();
+            DisableShop();
 
         }
         else if (Input.GetKeyDown(KeyCode.P) && isPaused)
         {
             ResumeGame();
+            EnableShop();
         }
     }
 
@@ -45,4 +53,22 @@ public class gameManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+
+
+    public void OnClickShopButton()
+    {
+        shopScreen.SetActive(!shopScreen.activeInHierarchy);
+    }
+
+    void EnableShop()
+    {
+        shopButton.interactable = true;
+    }
+    
+    void DisableShop()
+    {
+        shopButton.interactable = false;
+    }
+
 }
