@@ -18,14 +18,16 @@ public class EnemyController : MonoBehaviour
         
         //Calculating a random landing point for enemy
 
-        playerRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>();   
+        playerRenderer = GameObject.FindGameObjectWithTag("Player").transform.Find("House").GetComponent<Renderer>();
+       
+        //playerRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>();
         randomLandingPoint = GetRandomLandingPos();
-
 
     }
 
 
     void Update() {
+
         MoveEnemy();
     }
 
