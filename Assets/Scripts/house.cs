@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class house : MonoBehaviour
 {
+    public gameManager gameManager;
 
     public float buoyancy;
     public float speed;
@@ -68,6 +69,7 @@ private void UpdateBalloonCount()
 public void PigeonDead()
 {
     StartCoroutine(DelayedPigeonCount());
+    gameManager.feathers ++;
 }
 
 private IEnumerator DelayedPigeonCount()

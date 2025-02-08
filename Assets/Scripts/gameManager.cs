@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
+    public house house;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject shopScreen; 
     [SerializeField] Button shopButton;
@@ -13,13 +15,16 @@ public class gameManager : MonoBehaviour
     [SerializeField] Terrain terrain;
     [SerializeField] Terrain terrain2;
     [SerializeField] float speed;
-    
+    public int feathers;
+    [SerializeField] TextMeshProUGUI feathersText;
+    [SerializeField] TextMeshProUGUI buoyancyText;
 
     void Start()
     {
         pauseScreen.SetActive(false);
         shopScreen.SetActive(false);
         EnableShop();
+        feathers =0;
     }
 
     
@@ -47,6 +52,10 @@ public class gameManager : MonoBehaviour
         {
             terrain2.transform.Translate(1995, 0 , 0);
         }
+
+        feathersText.text = "Feathers: " + feathers;
+        buoyancyText.text = "Buoyancy: " + house.buoyancy;
+
     }
 
 
