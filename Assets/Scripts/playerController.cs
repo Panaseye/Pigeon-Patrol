@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour
 
     public string balloonTag = "balloon";
     public string pigeonTag = "enemy";
+    public AudioSource popSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,7 @@ public class playerController : MonoBehaviour
                 {
                     Destroy(hit.collider.gameObject);
                     house.BalloonPoped();
+                    popSFX.Play();
                 }
                 else if (hit.collider.CompareTag(pigeonTag))
                 {
