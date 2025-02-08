@@ -6,6 +6,8 @@ public class playerController : MonoBehaviour
     public house house;
 
     public string balloonTag = "balloon";
+    public string pigeonTag = "enemy";
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +15,7 @@ public class playerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Left-click or touch
@@ -27,6 +29,11 @@ public class playerController : MonoBehaviour
                 {
                     Destroy(hit.collider.gameObject);
                     house.BalloonPoped();
+                }
+                else if (hit.collider.CompareTag(pigeonTag))
+                {
+                    //send damage to pigeon if clicked
+                    hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(10);
                 }
             }
         }

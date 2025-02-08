@@ -5,12 +5,10 @@ public class EnemyController : MonoBehaviour
 {
     
     [Header("Enemy Stats")]
-    [SerializeField] int enemyHealth;
-
-
+    [SerializeField] int enemyHealth = 20;
     [SerializeField] float enemySpeed = 5f;
 
-
+    [SerializeField] float landYPos = 0.53f; 
     Vector3 randomLandingPoint;
 
     Renderer playerRenderer;
@@ -47,7 +45,7 @@ public class EnemyController : MonoBehaviour
         if(playerRenderer==null){return Vector3.zero;}
 
         float landX = Random.Range(playerRenderer.bounds.min.x, playerRenderer.bounds.max.x);
-        float landY = 0.53f;
+        float landY = landYPos;
         float landZ = Random.Range(playerRenderer.bounds.min.z, playerRenderer.bounds.max.z);
 
         //Debug.Log(new Vector3(landX , landY , landZ));
@@ -55,6 +53,15 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    public void TakeDamage(int damageAmount)
+    {
+        enemyHealth -= damageAmount;
+        
+        if(enemyHealth<=0)
+        {
+            Destroy(gameObject,0.1f);
+        }
+    }
 
 
 

@@ -16,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
 
 
     [Header("Spawn Bounds")]
+
+    
     [SerializeField] float maxBoundZ;
     [SerializeField] float minBoundZ;
     [SerializeField] float maxBoundY;
@@ -57,12 +59,37 @@ public class EnemySpawner : MonoBehaviour
 
 
 
-    Vector2 GetRandomSpawnPos()
+    Vector3 GetRandomSpawnPos()
     {
-        float spawnPosZ = Random.Range(minBoundZ , maxBoundZ);
-        float spawnPosY = maxBoundY;
+        //clockwise defind spawn regions 0,1,2
+        //left screen(0), top screen(1) , right screen(2)
+        int spawnRegion = Random.Range(0,3);
+        Debug.Log(spawnRegion   );
+        float spawnPosZ=0f;
+        float spawnPosY=0f;
 
-        return new Vector2(spawnPosZ , spawnPosY);
+        if(spawnRegion==0)
+        {
+            //spawn pos in left screen
+            spawnPosZ = minBoundZ;
+            spawnPosY = Random.Range(minBoundY , maxBoundY);
+
+        }
+        else if (spawnRegion==1)
+        {
+            //spawn pos in top screen
+            spawnPosZ = Random.Range(minBoundZ , maxBoundZ);
+            spawnPosY = maxBoundY;
+        }
+        else{
+            //spawn pos in right screen
+            spawnPosZ = maxBoundZ;
+            spawnPosY =Random.Range(minBoundY , maxBoundY);
+
+        }
+        
+        //dont know if 'x' afefcts spawn pos
+        return new Vector3(3f , spawnPosY , spawnPosZ);
     }
 
 }
