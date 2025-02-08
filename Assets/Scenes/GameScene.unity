@@ -1102,10 +1102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1c5543736f74d1a90375744ca24a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   buoyancy: 0
-  speed: 0
-  maxHeight: 0
+  speed: 2
+  maxHeight: 25
+  minHeight: 0
   pigeonCounter: {fileID: 563272531}
   pigeonCount: 0
   balloonTag: balloon
