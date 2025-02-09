@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<GameObject> enemyPrefabsList;
     [SerializeField] GameObject bossPrefab;
 
-    int startNumb=3;
+    int startNumb=5;
     int currNumb;
     int currWaveNumber = 1;
     int bossWave=0;
@@ -127,7 +127,7 @@ public class EnemySpawner : MonoBehaviour
         WaveConfigSO newWave = ScriptableObject.CreateInstance<WaveConfigSO>();
 
         //setting parameters
-        newWave.SetEnemiesToSpawn(waveNumber);
+        newWave.SetEnemiesToSpawn(currNumb);
         newWave.SetTimeSpawn( currWaveNumber , 0.1f);
         //Debug.Log(enemyPrefabsList[1] + " comes here ");
         newWave.SetEnemyPrefabs(enemyPrefabsList);
@@ -147,11 +147,10 @@ public class EnemySpawner : MonoBehaviour
         currWaveNumber++;
         //currNumb = startNumb*currWaveNumber;
 
-        currNumb  *= currNumb;
+        currNumb   = (int)Mathf.Pow((float)currNumb , 8f);
         //return 1 , means boss wave
         //return 0 , means normal wave
-        if(0!=0){return 1;}
-        else {return 0;}
+        return 0;
         
     }
 
