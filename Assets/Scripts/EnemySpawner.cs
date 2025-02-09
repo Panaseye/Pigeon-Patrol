@@ -150,7 +150,7 @@ public class EnemySpawner : MonoBehaviour
         currNumb  *= currNumb;
         //return 1 , means boss wave
         //return 0 , means normal wave
-        if(Random.Range(1,3)%2!=0){return 1;}
+        if(0!=0){return 1;}
         else {return 0;}
         
     }
