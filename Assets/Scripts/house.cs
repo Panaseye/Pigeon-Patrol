@@ -23,12 +23,15 @@ public class house : MonoBehaviour
     public float pigeonBuoyancy = -1f; 
     public float balloonAll;
     public float pigeonAll;
+
+    public float houseProtection =1f;
     public AudioSource flap;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         houseDamage = 0;
+        houseProtection=1f;
         int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
         //Debug.Log("Number of children with tag '" + balloonTag + "': " + balloonCount);
     }
@@ -38,7 +41,7 @@ public class house : MonoBehaviour
     {
         pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
         UpdateBalloonCount();
-        buoyancy = pigeonAll + balloonAll - houseDamage;
+        buoyancy = pigeonAll*houseProtection + balloonAll - houseDamage;
 
         // Debug.Log("Balloon boyancy " + balloonAll);
         //Debug.Log("Pigeon boyancy " + pigeonAll);

@@ -124,7 +124,14 @@ public class ShopManager : MonoBehaviour
         {
             gameManagerScript.UpdateFeathers(-upgradeCosts[currUpgradeLevel]);
         }
-        
+        if(currUpgradeLevel==1)
+        {
+            houseScript.houseProtection = 0.9f;
+        }        
+        else if(currUpgradeLevel ==2)
+        {
+            houseScript.houseProtection = 0.8f;
+        }
         currUpgradeLevel++;
 
         upgradeLevelText.text = "Upgrade Level: "+currUpgradeLevel;
@@ -184,6 +191,7 @@ public class ShopManager : MonoBehaviour
     {
 
         ResetUpgrades();
+        houseScript.houseProtection = 1f;
         maxUpgradeLevel = upgradeCosts.Count;
         upgradeCostText.text = "Cost: "+ upgradeCosts[currUpgradeLevel];
         upgradeLevelText.text = "Upgrade Level: "+currUpgradeLevel;
