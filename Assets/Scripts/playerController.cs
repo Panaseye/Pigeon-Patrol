@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour
     public string houseTag = "house";
     public float clickingDamage = 2;
     public AudioSource popSFX;
+    public AudioSource houseSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +45,8 @@ public class playerController : MonoBehaviour
                 else if (hit.collider.CompareTag(houseTag))
                 {
                     house.houseDamage += clickingDamage;
+                    houseSFX.Play();
+
 
 
                 }

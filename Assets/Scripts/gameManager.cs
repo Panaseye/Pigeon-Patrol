@@ -124,7 +124,7 @@ public class gameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
 
@@ -164,7 +164,7 @@ public class gameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
    
