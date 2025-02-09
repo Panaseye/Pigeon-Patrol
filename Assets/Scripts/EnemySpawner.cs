@@ -145,11 +145,12 @@ public class EnemySpawner : MonoBehaviour
     int ChangeWaveNumber()
     {
         currWaveNumber++;
-        currNumb = startNumb*currWaveNumber;
+        //currNumb = startNumb*currWaveNumber;
 
+        currNumb  *= currNumb;
         //return 1 , means boss wave
         //return 0 , means normal wave
-        if(currNumb%2!=0){return 1;}
+        if(Random.Range(1,3)%2!=0){return 1;}
         else {return 0;}
         
     }
