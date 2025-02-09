@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3144444892662136401, guid: e64d57a5bfb12af43834407ef0a803d3, type: 3}
       propertyPath: enemySpeed
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3144444892662136401, guid: e64d57a5bfb12af43834407ef0a803d3, type: 3}
       propertyPath: enemyHealth

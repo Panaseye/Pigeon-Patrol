@@ -126,14 +126,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 10
-  enemySpeed: 5
-  landYPos: 31.75
+  enemySpeed: 10
   movingModel: {fileID: 9016387169933198025}
   idleModel: {fileID: 5552619676999510646}
   movementThreshold: 0.01
   checkFrames: 10
+  isLanded: 0
   coo: {fileID: 8172040770538224723}
-  flap: {fileID: 8300000, guid: 610191c98ae7a4ad2b2269794beea802, type: 3}
 --- !u!82 &5993695167741404075
 AudioSource:
   m_ObjectHideFlags: 0
