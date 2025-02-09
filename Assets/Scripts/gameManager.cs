@@ -113,4 +113,12 @@ public class gameManager : MonoBehaviour
         houseDestruction.DestroyHouse();
     }
 
+    public void UpdateFeathers(int count)
+    {
+        //UI will be updated automatically
+        feathers += count;     
+    }
+
+    public int GetFeathers(){return feathers;}
+
 }

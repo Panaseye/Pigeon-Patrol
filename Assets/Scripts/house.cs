@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class house : MonoBehaviour
 {
+
+    [SerializeField] GameObject balloonPrefab;
     public gameManager gameManager;
     public float houseDamage;
 
@@ -37,8 +39,8 @@ public class house : MonoBehaviour
         UpdateBalloonCount();
         buoyancy = pigeonAll + balloonAll - houseDamage;
 
-        Debug.Log("Balloon boyancy " + balloonAll);
-        Debug.Log("Pigeon boyancy " + pigeonAll);
+        // Debug.Log("Balloon boyancy " + balloonAll);
+        //Debug.Log("Pigeon boyancy " + pigeonAll);
 
         if (gameObject.transform.position.y == minHeight)
         {
@@ -49,27 +51,7 @@ public class house : MonoBehaviour
 
         if (gameObject.transform.position.y <= maxHeight )
         {
-            // // Calculate vertical movement based on buoyancy
-            // //float movementY =gameObject.transform.position.y + -(buoyancy * Time.deltaTime * speed);
-            // float movementY = buoyancy * Time.deltaTime * speed;
-            // float totalMovementY =  transform.position.y+movementY;
-            
-            // if(movementY>=0){totalMovementY = Mathf.Clamp(transform.position.y+movementY, transform.position.y , maxHeight) - transform.position.y ;}
-            
-            //  Debug.Log("Total Buoyancy movement " + totalMovementY);
-    
-            // // Adjust vertical movement to not go below the maxHeight
-            // // if (gameObject.transform.position.y + movementY > maxHeight)
-            // // {
-            // //     movementY = maxHeight - gameObject.transform.position.y;
-            // // }
-
-            // // // Apply the movement
-            // gameObject.transform.Translate(
-            // gameObject.transform.position.x,
-            // totalMovementY, 
-            // gameObject.transform.position.z);
-
+            //  Calculate vertical movement based on buoyancy
             float movementY = buoyancy * Time.deltaTime * speed;
             float totalMovementY;
             if(movementY>=0)
@@ -100,7 +82,7 @@ public class house : MonoBehaviour
     private void UpdateBalloonCount()
     {
         int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
-        // Debug.Log("Balloon count: " + balloonCount);
+         Debug.Log("Balloon count: " + balloonCount);
         balloonAll = balloonCount * balloonBuoyancy;
         // Debug.Log(balloonAll + " buoy " + balloonBuoyancy + " count " + balloonCount);
     }
@@ -124,7 +106,7 @@ public class house : MonoBehaviour
     void OnPigeonCountReady(int count)
     {
         pigeonCount = count;
-        Debug.Log("Stationary Pigeons: " + count);
+        //Debug.Log("Stationary Pigeons: " + count);
         pigeonAll = pigeonCount * pigeonBuoyancy;
         // Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
     }
@@ -148,8 +130,42 @@ public class house : MonoBehaviour
         return count;
     }
 
+    public void RepairHouseDamage(int repairAmount)
+    {
+        if(houseDamage<=repairAmount)
+        {
+            houseDamage=0;
+            return;
+        }
+        houseDamage -= repairAmount;
+    }
     
-    
+    public void AddBalloons()
+    {
+        //z 0.55, -0.55
+        //y 4 , 4.8
+        //x -2.3,2.3
+
+        //hard coded values for now
+        GameObject houseColoredObj = GameObject.FindGameObjectWithTag("Player").transform.Find("housecolored").Find("Roof").gameObject;
+        Renderer playerRenderer = houseColoredObj.GetComponent<Renderer>();
+
+        if(playerRenderer==null){return;}
+
+        float spawnPosX = Random.Range(playerRenderer.bounds.min.x, playerRenderer.bounds.max.x);
+        float spawnPosY= playerRenderer.bounds.max.y ;
+        float spawnPosZ = Random.Range(playerRenderer.bounds.min.z, playerRenderer.bounds.max.z);
+
+
+        Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY , spawnPosZ);
+
+        Transform balloonParent = GameObject.FindGameObjectWithTag("Player").transform.Find("balloons");
+        Transform balloonChild = balloonParent.Find("Ballooncolorecd");
+
+        GameObject instance = Instantiate(balloonPrefab , spawnPos , Quaternion.identity ,balloonParent);
+        instance.transform.localScale = Vector3.one * 0.2f;
+        Debug.Log("Balloon added");
+    }
         
         
     

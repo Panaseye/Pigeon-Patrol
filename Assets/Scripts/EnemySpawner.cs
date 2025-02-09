@@ -35,6 +35,9 @@ public class EnemySpawner : MonoBehaviour
         do{
             foreach(WaveConfigSO currConfig in waveConfigs)
             {
+                //wait for some time before spawning
+                yield return new WaitForSecondsRealtime(10f);
+
                 currWave = currConfig;
                 int enemyCount = currWave.GetNumberOfEnemiesToSpawn();
                 GameObject enemyPrefab = currWave.GetEnemyPrefab();
