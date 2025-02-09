@@ -3299,6 +3299,7 @@ MonoBehaviour:
   enemyPrefabsList:
   - {fileID: 1486291696050965651, guid: e64d57a5bfb12af43834407ef0a803d3, type: 3}
   - {fileID: 779197939932465578, guid: 3bdc4f7016339d544b760e4e4e94b9e8, type: 3}
+  - {fileID: 5721749866362252661, guid: f14420cef269f1e44a7c46ef78d81f40, type: 3}
   bossPrefab: {fileID: 5721749866362252661, guid: f14420cef269f1e44a7c46ef78d81f40, type: 3}
   maxBoundX: -17
   minBoundX: 17

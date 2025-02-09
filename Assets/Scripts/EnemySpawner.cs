@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class EnemySpawner : MonoBehaviour
 {
     
-    [SerializeField] List<WaveConfigSO> waveConfigs;
+    List<WaveConfigSO> waveConfigs;
     float timeBtwWaves = 2f;
 
     [SerializeField] bool spawnWaves = true;
