@@ -7,6 +7,8 @@ public class playerController : MonoBehaviour
 
     public string balloonTag = "balloon";
     public string pigeonTag = "enemy";
+    public string houseTag = "house";
+    public float clickingDamage = 2;
     public AudioSource popSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +40,12 @@ public class playerController : MonoBehaviour
                     //send damage to pigeon if clicked
                     hit.collider.gameObject.GetComponent<EnemyController>().TakeDamage(10);
                     house.PigeonDead();
+                }
+                else if (hit.collider.CompareTag(houseTag))
+                {
+                    house.houseDamage += clickingDamage;
+
+
                 }
             }
         }

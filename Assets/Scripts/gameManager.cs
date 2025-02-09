@@ -7,8 +7,10 @@ using TMPro;
 public class gameManager : MonoBehaviour
 {
     public house house;
+    public houseDestruction houseDestruction;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject shopScreen; 
+
     [SerializeField] Button shopButton;
     private bool isPaused = false;
 
@@ -18,6 +20,7 @@ public class gameManager : MonoBehaviour
     public int feathers;
     [SerializeField] TextMeshProUGUI feathersText;
     [SerializeField] TextMeshProUGUI buoyancyText;
+    [SerializeField] TextMeshProUGUI houseDamageText;
 
     void Start()
     {
@@ -55,6 +58,7 @@ public class gameManager : MonoBehaviour
 
         feathersText.text = "Feathers: " + feathers;
         buoyancyText.text = "Buoyancy: " + house.buoyancy;
+        houseDamageText.text = "House Damage: " + house.houseDamage;
 
     }
 
@@ -102,6 +106,11 @@ public class gameManager : MonoBehaviour
     void DisableShop()
     {
         shopButton.interactable = false;
+    }
+
+    public void GameOver()
+    {
+        houseDestruction.DestroyHouse();
     }
 
 }

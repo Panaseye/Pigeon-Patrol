@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class house : MonoBehaviour
 {
     public gameManager gameManager;
+    public float houseDamage;
 
     public float buoyancy;
     public float speed;
@@ -24,7 +25,7 @@ public class house : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-    
+        houseDamage = 0;
         int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
         //Debug.Log("Number of children with tag '" + balloonTag + "': " + balloonCount);
     }
@@ -34,10 +35,17 @@ public class house : MonoBehaviour
     {
         pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
         UpdateBalloonCount();
-        buoyancy = pigeonAll + balloonAll;
+        buoyancy = pigeonAll + balloonAll - houseDamage;
 
         Debug.Log("Balloon boyancy " + balloonAll);
         Debug.Log("Pigeon boyancy " + pigeonAll);
+
+        if (gameObject.transform.position.y == minHeight)
+        {
+            gameManager.GameOver();
+
+        }
+
 
         if (gameObject.transform.position.y <= maxHeight )
         {
@@ -99,8 +107,9 @@ public class house : MonoBehaviour
 
     public void PigeonDead()
     {
-        StartCoroutine(DelayedPigeonCount());
         gameManager.feathers ++;
+        StartCoroutine(DelayedPigeonCount());
+        
     }
 
     private IEnumerator DelayedPigeonCount()

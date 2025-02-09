@@ -42,9 +42,18 @@ public class PigeonCounter : MonoBehaviour
         // Count pigeons that didn't move
         foreach (var entry in initialPositions)
         {
+            
+            
             Transform pigeon = entry.Key;
+
+            if (pigeon == null) // Check if the pigeon was destroyed
+                {
+                    continue; // Skip this pigeon
+                }
             Vector3 initialPos = entry.Value;
             Vector3 currentPos = pigeon.position;
+            
+            
             
 
             if (Vector3.Distance(initialPos, currentPos) < movementThreshold)
