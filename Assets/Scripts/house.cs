@@ -26,21 +26,21 @@ public class house : MonoBehaviour
     {
     
         int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
-        Debug.Log("Number of children with tag '" + balloonTag + "': " + balloonCount);
+        //Debug.Log("Number of children with tag '" + balloonTag + "': " + balloonCount);
     }
 
     // Update is called once per frame
     void Update()
     {
-       pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
+        pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
         UpdateBalloonCount();
-    buoyancy = pigeonAll + balloonAll;
+        buoyancy = pigeonAll + balloonAll;
 
         Debug.Log("Balloon boyancy " + balloonAll);
         Debug.Log("Pigeon boyancy " + pigeonAll);
 
         if (gameObject.transform.position.y <= maxHeight )
-{
+        {
             // // Calculate vertical movement based on buoyancy
             // //float movementY =gameObject.transform.position.y + -(buoyancy * Time.deltaTime * speed);
             // float movementY = buoyancy * Time.deltaTime * speed;
@@ -74,14 +74,14 @@ public class house : MonoBehaviour
             }
             // Debug.Log("Total Buoyancy movement " + totalMovementY);
 
-    // Apply the movement
-    gameObject.transform.Translate(
-        gameObject.transform.position.x,
-             totalMovementY, 
-        gameObject.transform.position.z);
+            // Apply the movement
+            gameObject.transform.Translate(
+            gameObject.transform.position.x,
+                totalMovementY, 
+            gameObject.transform.position.z);
 
 
-}
+        }
     }    
 
     public void BalloonPoped()
@@ -115,7 +115,7 @@ private IEnumerator DelayedPigeonCount()
 void OnPigeonCountReady(int count)
 {
     pigeonCount = count;
-        //Debug.Log("Stationary Pigeons: " + count);
+        Debug.Log("Stationary Pigeons: " + count);
     pigeonAll = pigeonCount * pigeonBuoyancy;
        // Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
 }

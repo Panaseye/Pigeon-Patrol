@@ -82,6 +82,8 @@ public class gameManager : MonoBehaviour
 
     public void OnClickShopButton()
     {
+        if(shopScreen.activeInHierarchy){Time.timeScale = 1;}
+        else {Time.timeScale=0;}
         shopScreen.SetActive(!shopScreen.activeInHierarchy);
     }
 

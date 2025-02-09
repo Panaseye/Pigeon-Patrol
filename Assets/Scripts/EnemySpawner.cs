@@ -18,14 +18,14 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Bounds")]
 
     
-    [SerializeField] float maxBoundZ;
-    [SerializeField] float minBoundZ;
+    [SerializeField] float maxBoundX;
+    [SerializeField] float minBoundX;
     [SerializeField] float maxBoundY;
     [SerializeField] float minBoundY;
     
     
     void Start() {
-
+        
         StartCoroutine(SpawnEnemyWaves());    
     }
 
@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
                 
                 for(int i = 0 ; i < enemyCount ; i++)
                 {
+                    Debug.Log("ranmdom spawn pos " + GetRandomSpawnPos());
                     Instantiate(enemyPrefab,
                                 GetRandomSpawnPos(),
                                 Quaternion.identity,
@@ -64,31 +65,31 @@ public class EnemySpawner : MonoBehaviour
         //clockwise defind spawn regions 0,1,2
         //left screen(0), top screen(1) , right screen(2)
         int spawnRegion = Random.Range(0,3);
-        float spawnPosZ=0f;
+        float spawnPosX=0f;
         float spawnPosY=0f;
 
         if(spawnRegion==0)
         {
             //spawn pos in left screen
-            spawnPosZ = minBoundZ;
+            spawnPosX = minBoundX;
             spawnPosY = Random.Range(minBoundY , maxBoundY);
 
         }
         else if (spawnRegion==1)
         {
             //spawn pos in top screen
-            spawnPosZ = Random.Range(minBoundZ , maxBoundZ);
+            spawnPosX = Random.Range(minBoundX , maxBoundX);
             spawnPosY = maxBoundY;
         }
         else{
             //spawn pos in right screen
-            spawnPosZ = maxBoundZ;
+            spawnPosX = maxBoundX;
             spawnPosY =Random.Range(minBoundY , maxBoundY);
 
         }
         
         //dont know if 'x' afefcts spawn pos
-        return new Vector3(3f , spawnPosY , spawnPosZ);
+        return new Vector3(spawnPosX , spawnPosY , 0f);
     }
 
 }

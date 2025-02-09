@@ -1,5 +1,6 @@
 
 using System.Collections;
+
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     Vector3 randomLandingPoint;
 
     Renderer playerRenderer;
+    GameObject houseObj;
 
     public GameObject movingModel;  // Assign the "moving" model prefab
     public GameObject idleModel;    // Assign the "idle" model prefab
@@ -26,22 +28,25 @@ public class EnemyController : MonoBehaviour
 
 
     
-    void Start() {
+    void Awake() 
+    {
         
         //Calculating a random landing point for enemy
+        houseObj = GameObject.FindGameObjectWithTag("Player").transform.Find("House").gameObject;
+        playerRenderer = houseObj.GetComponent<Renderer>();
 
-        playerRenderer = GameObject.FindGameObjectWithTag("Player").transform.Find("house look").GetComponent<Renderer>();
-       
         //playerRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>();
         randomLandingPoint = GetRandomLandingPos();
+        //Debug.Log("landing point "+ randomLandingPoint);
         lastPosition = transform.position;
         SwitchToMoving();
 
     
-            }
+    }
 
 
-    void Update() {
+    void Update() 
+    {
 
         MoveEnemy();
 
@@ -50,7 +55,7 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(CheckMovement());
         }
 
-
+        //transform.position = new Vector3(transform.position.x , playerRenderer.bounds.max.y , transform.position.z);
 
     }
 
@@ -92,10 +97,10 @@ public class EnemyController : MonoBehaviour
         if(playerRenderer==null){return Vector3.zero;}
 
         float landX = Random.Range(playerRenderer.bounds.min.x, playerRenderer.bounds.max.x);
-        float landY = landYPos;
+        float landY = playerRenderer.bounds.max.y;
         float landZ = Random.Range(playerRenderer.bounds.min.z, playerRenderer.bounds.max.z);
 
-        //Debug.Log(new Vector3(landX , landY , landZ));
+        //Debug.Log("herer" +new Vector3(landX , landY , landZ));
         return new Vector3(landX , landY , landZ);
     }
 
