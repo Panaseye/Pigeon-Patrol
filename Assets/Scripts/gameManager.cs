@@ -8,8 +8,10 @@ public class gameManager : MonoBehaviour
 {
     public house house;
     public houseDestruction houseDestruction;
+    [SerializeField] GameObject gameScreen;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject shopScreen; 
+    [SerializeField] GameObject gameOverScreen; 
 
     [SerializeField] Button shopButton;
     private bool isPaused = false;
@@ -22,13 +24,21 @@ public class gameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI buoyancyText;
     [SerializeField] TextMeshProUGUI houseDamageText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI finalScoreText;
+    [SerializeField] TextMeshProUGUI finalKillingText;
+
+    public AudioSource fall;
     private int score;
     private float timeElapsed;
+    public bool gameIsOn;
 
     void Start()
     {
+        gameIsOn = true;
+        gameScreen.SetActive(true);
         pauseScreen.SetActive(false);
         shopScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
         EnableShop();
         feathers =0;
         score = 0;
@@ -49,25 +59,39 @@ public class gameManager : MonoBehaviour
             EnableShop();
         }
 
-        terrain.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        terrain2.transform.Translate(Vector3.left * speed  * Time.deltaTime);
-        if (terrain.transform.position.x <= -1500)
+        if (gameIsOn)
+        
+        
         {
-            terrain.transform.Translate(1995, 0 , 0);
-        }
-        if (terrain2.transform.position.x <= -1500)
-        {
-            terrain2.transform.Translate(1995, 0 , 0);
+            terrain.transform.Translate(Vector3.left * speed * Time.deltaTime);
+            terrain2.transform.Translate(Vector3.left * speed  * Time.deltaTime);
+            if (terrain.transform.position.x <= -1500)
+                {
+                    terrain.transform.Translate(1995, 0 , 0);
+                }
+                if (terrain2.transform.position.x <= -1500)
+                {
+                    terrain2.transform.Translate(1995, 0 , 0);
+                }
+
+
+                timeElapsed += Time.deltaTime; 
+
+                if (timeElapsed >= 1f) 
+                    {
+                        score += 1;
+                        timeElapsed = 0f; 
+                        Debug.Log("Score: " + score);
+                    }
+
+
+
         }
 
-        timeElapsed += Time.deltaTime; 
 
-    if (timeElapsed >= 1f) 
-    {
-        score += 1;
-        timeElapsed = 0f; 
-        Debug.Log("Score: " + score);
-    }
+        
+
+        
 
         feathersText.text = "Feathers: " + feathers;
         buoyancyText.text = "Buoyancy: " + house.buoyancy;
@@ -124,7 +148,12 @@ public class gameManager : MonoBehaviour
 
     public void GameOver()
     {
+        gameIsOn = false;
+        fall.Play();
+        gameOverScreen.SetActive(true);
+        gameScreen.SetActive(false);
         houseDestruction.DestroyHouse();
+        finalScoreText.text = "Score: "+ score;
     }
 
     public void UpdateFeathers(int count)
@@ -132,6 +161,13 @@ public class gameManager : MonoBehaviour
         //UI will be updated automatically
         feathers += count;     
     }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+   
 
     public int GetFeathers(){return feathers;}
 
