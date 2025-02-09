@@ -83,7 +83,7 @@ public class house : MonoBehaviour
     private void UpdateBalloonCount()
     {
         int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
-         Debug.Log("Balloon count: " + balloonCount);
+        // Debug.Log("Balloon count: " + balloonCount);
         balloonAll = balloonCount * balloonBuoyancy;
         // Debug.Log(balloonAll + " buoy " + balloonBuoyancy + " count " + balloonCount);
     }
