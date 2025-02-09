@@ -36,8 +36,8 @@ public class house : MonoBehaviour
         UpdateBalloonCount();
         buoyancy = pigeonAll + balloonAll;
 
-       // Debug.Log("Balloon boyancy " + balloonAll);
-        //Debug.Log("Pigeon boyancy " + pigeonAll);
+        Debug.Log("Balloon boyancy " + balloonAll);
+        Debug.Log("Pigeon boyancy " + pigeonAll);
 
         if (gameObject.transform.position.y <= maxHeight )
         {
@@ -115,7 +115,7 @@ public class house : MonoBehaviour
     void OnPigeonCountReady(int count)
     {
         pigeonCount = count;
-        //Debug.Log("Stationary Pigeons: " + count);
+        Debug.Log("Stationary Pigeons: " + count);
         pigeonAll = pigeonCount * pigeonBuoyancy;
         // Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
     }

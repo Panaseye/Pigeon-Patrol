@@ -1,6 +1,6 @@
 
 using System.Collections;
-
+using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     Renderer playerRenderer;
     GameObject houseObj;
+    GameObject houseColoredObj;
 
     public GameObject movingModel;  // Assign the "moving" model prefab
     public GameObject idleModel;    // Assign the "idle" model prefab
@@ -33,7 +34,9 @@ public class EnemyController : MonoBehaviour
         
         //Calculating a random landing point for enemy
         houseObj = GameObject.FindGameObjectWithTag("Player").transform.Find("House").gameObject;
-        playerRenderer = houseObj.GetComponent<Renderer>();
+        //playerRenderer = houseObj.GetComponent<Renderer>();
+        houseColoredObj = GameObject.FindGameObjectWithTag("Player").transform.Find("housecolored").Find("Roof").gameObject;
+        playerRenderer = houseColoredObj.GetComponent<Renderer>();
 
         //playerRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>();
         randomLandingPoint = GetRandomLandingPos();
@@ -54,7 +57,8 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(CheckMovement());
         }
-
+        
+        //keeps pigeons together with the house if it moves
         //transform.position = new Vector3(transform.position.x , playerRenderer.bounds.max.y , transform.position.z);
 
     }
