@@ -30,6 +30,8 @@ public class gameManager : MonoBehaviour
     public AudioSource fall;
     private int score;
     private float timeElapsed;
+
+    public int pigeonsKilled=0;
     public bool gameIsOn;
 
     void Start()
@@ -97,6 +99,7 @@ public class gameManager : MonoBehaviour
         buoyancyText.text = "Buoyancy: " + house.buoyancy;
         houseDamageText.text = "House Damage: " + house.houseDamage;
         scoreText.text = "Score: " + score;
+        finalKillingText.text = "Pigeons Slayed: " +pigeonsKilled;
 
     }
 

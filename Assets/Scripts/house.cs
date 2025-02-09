@@ -91,6 +91,7 @@ public class house : MonoBehaviour
     public void PigeonDead()
     {
         gameManager.feathers ++;
+        gameManager.pigeonsKilled++;
         flap.Play();
         StartCoroutine(DelayedPigeonCount());
         

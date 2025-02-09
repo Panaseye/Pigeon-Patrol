@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
             isChecking = true;
             SwitchToIdle();
         }
-        
+
         if (!isChecking)
         {
             StartCoroutine(CheckMovement());
