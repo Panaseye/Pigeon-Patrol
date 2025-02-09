@@ -21,6 +21,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI feathersText;
     [SerializeField] TextMeshProUGUI buoyancyText;
     [SerializeField] TextMeshProUGUI houseDamageText;
+    [SerializeField] TextMeshProUGUI scoreText;
+    private int score;
+    private float timeElapsed;
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class gameManager : MonoBehaviour
         shopScreen.SetActive(false);
         EnableShop();
         feathers =0;
+        score = 0;
     }
 
     
@@ -56,9 +60,19 @@ public class gameManager : MonoBehaviour
             terrain2.transform.Translate(1995, 0 , 0);
         }
 
+        timeElapsed += Time.deltaTime; 
+
+    if (timeElapsed >= 1f) 
+    {
+        score += 1;
+        timeElapsed = 0f; 
+        Debug.Log("Score: " + score);
+    }
+
         feathersText.text = "Feathers: " + feathers;
         buoyancyText.text = "Buoyancy: " + house.buoyancy;
         houseDamageText.text = "House Damage: " + house.houseDamage;
+        scoreText.text = "Score: " + score;
 
     }
 

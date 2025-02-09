@@ -23,6 +23,7 @@ public class house : MonoBehaviour
     public float pigeonBuoyancy = -1f; 
     public float balloonAll;
     public float pigeonAll;
+    public AudioSource flap;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -90,6 +91,7 @@ public class house : MonoBehaviour
     public void PigeonDead()
     {
         gameManager.feathers ++;
+        flap.Play();
         StartCoroutine(DelayedPigeonCount());
         
     }

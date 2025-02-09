@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     Renderer playerRenderer;
     GameObject houseObj;
+    house house;
     GameObject houseColoredObj;
 
     public GameObject movingModel;  // Assign the "moving" model prefab
@@ -25,7 +26,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 lastPosition;
     private bool isChecking = false;
     public AudioSource coo;
-    public AudioClip flap;
+    
 
 
     
@@ -34,6 +35,7 @@ public class EnemyController : MonoBehaviour
         
         //Calculating a random landing point for enemy
         houseObj = GameObject.FindGameObjectWithTag("Player").transform.Find("House").gameObject;
+        house = GameObject.FindGameObjectWithTag("Player").GetComponent<house>();
         //playerRenderer = houseObj.GetComponent<Renderer>();
         houseColoredObj = GameObject.FindGameObjectWithTag("Player").transform.Find("housecolored").Find("Roof").gameObject;
         playerRenderer = houseColoredObj.GetComponent<Renderer>();
@@ -115,8 +117,11 @@ public class EnemyController : MonoBehaviour
         Debug.Log("taken damage");
         if(enemyHealth<=0)
         {
+            house.PigeonDead();
             Destroy(gameObject,0.1f);
-            AudioSource.PlayClipAtPoint(flap, transform.position);
+
+            
+            
         }
     }
 
