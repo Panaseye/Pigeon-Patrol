@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class EnemySpawner : MonoBehaviour
 {
     
-    List<WaveConfigSO> waveConfigs;
+    [SerializeField] List<WaveConfigSO> waveConfigs;
     float timeBtwWaves = 2f;
 
     [SerializeField] bool spawnWaves = true;
@@ -128,7 +128,7 @@ public class EnemySpawner : MonoBehaviour
 
         //setting parameters
         newWave.SetEnemiesToSpawn(currNumb);
-        newWave.SetTimeSpawn( currWaveNumber*0.01f , 0f);
+        newWave.SetTimeSpawn( currWaveNumber , 0.1f);
         //Debug.Log(enemyPrefabsList[1] + " comes here ");
         newWave.SetEnemyPrefabs(enemyPrefabsList);
         newWave.SetBossEnemyPrefab(bossPrefab);
@@ -139,7 +139,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SetTimeBtwWaves()
     {
-        timeBtwWaves = 0.05f;
+        timeBtwWaves = 1f;
     }
 
     int ChangeWaveNumber()
@@ -147,7 +147,7 @@ public class EnemySpawner : MonoBehaviour
         currWaveNumber++;
         //currNumb = startNumb*currWaveNumber;
 
-        currNumb   = (int)Mathf.Pow((float)currNumb , 8f);
+        currNumb   = (int)Mathf.Pow((float)currNumb , 3f);
         //return 1 , means boss wave
         //return 0 , means normal wave
         return 0;
