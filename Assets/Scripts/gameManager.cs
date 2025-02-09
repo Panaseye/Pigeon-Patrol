@@ -43,7 +43,7 @@ public class gameManager : MonoBehaviour
         }
 
         terrain.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        terrain2.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        terrain2.transform.Translate(Vector3.left * speed  * Time.deltaTime);
         if (terrain.transform.position.x <= -1500)
         {
             terrain.transform.Translate(1995, 0 , 0);
@@ -72,6 +72,13 @@ public class gameManager : MonoBehaviour
         pauseScreen.SetActive(false);
         isPaused = false;
     }
+
+    public void ResumeGameFromShop()
+    {
+        Time.timeScale = 1;
+        shopScreen.SetActive(false);
+    }
+
 
     public void BackToMenu()
     {

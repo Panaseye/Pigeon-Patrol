@@ -36,8 +36,8 @@ public class house : MonoBehaviour
         UpdateBalloonCount();
         buoyancy = pigeonAll + balloonAll;
 
-        Debug.Log("Balloon boyancy " + balloonAll);
-        Debug.Log("Pigeon boyancy " + pigeonAll);
+       // Debug.Log("Balloon boyancy " + balloonAll);
+        //Debug.Log("Pigeon boyancy " + pigeonAll);
 
         if (gameObject.transform.position.y <= maxHeight )
         {
@@ -85,40 +85,40 @@ public class house : MonoBehaviour
     }    
 
     public void BalloonPoped()
-{
-    Invoke(nameof(UpdateBalloonCount), 0.05f); // Small delay
-}
+    {
+        Invoke(nameof(UpdateBalloonCount), 0.05f); // Small delay
+    }
 
-private void UpdateBalloonCount()
-{
-    int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
-       // Debug.Log("Balloon count: " + balloonCount);
-    balloonAll = balloonCount * balloonBuoyancy;
-       // Debug.Log(balloonAll + " buoy " + balloonBuoyancy + " count " + balloonCount);
-}
+    private void UpdateBalloonCount()
+    {
+        int balloonCount = CountAllChildrenWithTag(balloonTag, transform);
+        // Debug.Log("Balloon count: " + balloonCount);
+        balloonAll = balloonCount * balloonBuoyancy;
+        // Debug.Log(balloonAll + " buoy " + balloonBuoyancy + " count " + balloonCount);
+    }
 
-public void PigeonDead()
-{
-    StartCoroutine(DelayedPigeonCount());
-    gameManager.feathers ++;
-}
+    public void PigeonDead()
+    {
+        StartCoroutine(DelayedPigeonCount());
+        gameManager.feathers ++;
+    }
 
-private IEnumerator DelayedPigeonCount()
-{
-    yield return new WaitForEndOfFrame(); // Ensures Unity fully removes the object
-    
-    yield return null; 
+    private IEnumerator DelayedPigeonCount()
+    {
+        yield return new WaitForEndOfFrame(); // Ensures Unity fully removes the object
+        
+        yield return null; 
 
-    pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
-}
+        pigeonCounter.CountStationaryPigeons(OnPigeonCountReady);
+    }
 
-void OnPigeonCountReady(int count)
-{
-    pigeonCount = count;
-        Debug.Log("Stationary Pigeons: " + count);
-    pigeonAll = pigeonCount * pigeonBuoyancy;
-       // Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
-}
+    void OnPigeonCountReady(int count)
+    {
+        pigeonCount = count;
+        //Debug.Log("Stationary Pigeons: " + count);
+        pigeonAll = pigeonCount * pigeonBuoyancy;
+        // Debug.Log(pigeonAll + " buoy " + pigeonBuoyancy + " count " + pigeonCount);
+    }
 
   
     public int CountAllChildrenWithTag(string targetTag, Transform parent)
