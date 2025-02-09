@@ -4150,9 +4150,10 @@ MonoBehaviour:
   balloonTag: balloon
   pigeonTag: enemy
   balloonBuoyancy: 5
-  pigeonBuoyancy: -1
+  pigeonBuoyancy: -2
   balloonAll: 0
   pigeonAll: 0
+  houseProtection: 1
   flap: {fileID: 932872399}
 --- !u!65 &932872395
 BoxCollider:
@@ -4672,6 +4673,7 @@ MonoBehaviour:
   finalScoreText: {fileID: 1963397469}
   finalKillingText: {fileID: 333680673}
   fall: {fileID: 1010641145}
+  pigeonsKilled: 0
   gameIsOn: 0
 --- !u!4 &1010641142
 Transform:
@@ -5343,8 +5345,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - {fileID: 11400000, guid: 9461b48540f0c6144b2d3949d1edbcff, type: 2}
-  timeBtwWaves: 2
   spawnWaves: 1
+  enemyPrefabsList:
+  - {fileID: 1486291696050965651, guid: e64d57a5bfb12af43834407ef0a803d3, type: 3}
+  - {fileID: 779197939932465578, guid: 3bdc4f7016339d544b760e4e4e94b9e8, type: 3}
+  bossPrefab: {fileID: 5721749866362252661, guid: f14420cef269f1e44a7c46ef78d81f40, type: 3}
   maxBoundX: 17
   minBoundX: -17
   maxBoundY: 45
