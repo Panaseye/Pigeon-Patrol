@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 10
-  enemySpeed: 10
+  enemySpeed: 40
   movingModel: {fileID: 9016387169933198025}
   idleModel: {fileID: 5552619676999510646}
   movementThreshold: 0.01

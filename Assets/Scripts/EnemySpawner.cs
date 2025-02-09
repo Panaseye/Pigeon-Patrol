@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
             
             AddWave(currNumb);
-
+            Debug.Log("curr enemeis " + currNumb);
             foreach(WaveConfigSO currConfig in waveConfigs)
             {
 
@@ -128,7 +128,7 @@ public class EnemySpawner : MonoBehaviour
 
         //setting parameters
         newWave.SetEnemiesToSpawn(currNumb);
-        newWave.SetTimeSpawn( currWaveNumber , 0.1f);
+        newWave.SetTimeSpawn( currWaveNumber*0.01f , 0f);
         //Debug.Log(enemyPrefabsList[1] + " comes here ");
         newWave.SetEnemyPrefabs(enemyPrefabsList);
         newWave.SetBossEnemyPrefab(bossPrefab);

@@ -83,7 +83,7 @@ public class gameManager : MonoBehaviour
                     {
                         score += 1;
                         timeElapsed = 0f; 
-                        Debug.Log("Score: " + score);
+                        //Debug.Log("Score: " + score);
                     }
 
 
