@@ -49,7 +49,8 @@ public class EnemySpawner : MonoBehaviour
                                 GetRandomSpawnPos(),
                                 Quaternion.identity,
                                 transform);
-                    
+
+
                     yield return new WaitForSeconds(currWave.GetRandomTimeBtwSpawn());
                 }
 

@@ -10,7 +10,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] int enemyHealth = 20;
     [SerializeField] float enemySpeed = 5f;
 
-    [SerializeField] float landYPos = 0.53f; 
     Vector3 randomLandingPoint;
 
     Renderer playerRenderer;
@@ -25,6 +24,8 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 lastPosition;
     private bool isChecking = false;
+
+    [SerializeField] bool isLanded = false;
     public AudioSource coo;
     
 
@@ -54,15 +55,20 @@ public class EnemyController : MonoBehaviour
     {
 
         MoveEnemy();
-
+        if(isLanded)
+        {
+            isChecking = true;
+            SwitchToIdle();
+        }
+        
         if (!isChecking)
         {
             StartCoroutine(CheckMovement());
         }
         
         //keeps pigeons together with the house if it moves
-        //transform.position = new Vector3(transform.position.x , playerRenderer.bounds.max.y , transform.position.z);
-
+        transform.position= new Vector3(transform.position.x , playerRenderer.bounds.max.y , transform.position.z);
+    
     }
 
     private IEnumerator CheckMovement()
@@ -82,9 +88,10 @@ public class EnemyController : MonoBehaviour
         else
         {
             SwitchToIdle();
-        }
 
-        isChecking = false;
+        }
+            isChecking = false;
+        
     }
 
     void MoveEnemy()
@@ -93,6 +100,11 @@ public class EnemyController : MonoBehaviour
         if(playerRenderer!=null)
         {
             transform.position = Vector3.MoveTowards(transform.position , randomLandingPoint , moveStep);
+        }
+        if(transform.position == randomLandingPoint)
+        {
+            isLanded = true;
+
         }
     }
 
