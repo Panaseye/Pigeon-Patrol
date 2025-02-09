@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("Current Wave -------- "+ currWaveNumber + ";"+ currNumb + ";" + currConfig.GetNumberOfEnemiesToSpawn());
 
                 //wait for some time before spawning
-                yield return new WaitForSecondsRealtime(5f);
+                if(currWaveNumber==1){yield return new WaitForSecondsRealtime(5f);}
 
                 currWave = currConfig;
                 int enemyCount = currWave.GetNumberOfEnemiesToSpawn();
@@ -128,7 +128,7 @@ public class EnemySpawner : MonoBehaviour
 
         //setting parameters
         newWave.SetEnemiesToSpawn(waveNumber);
-        newWave.SetTimeSpawn( 0.278f*waveNumber + 0.832f , 0.1f);
+        newWave.SetTimeSpawn( waveNumber , 0.1f);
         //Debug.Log(enemyPrefabsList[1] + " comes here ");
         newWave.SetEnemyPrefabs(enemyPrefabsList);
         newWave.SetBossEnemyPrefab(bossPrefab);
@@ -139,7 +139,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SetTimeBtwWaves()
     {
-        timeBtwWaves = 2f;
+        timeBtwWaves = 0.2f;
     }
 
     int ChangeWaveNumber()
