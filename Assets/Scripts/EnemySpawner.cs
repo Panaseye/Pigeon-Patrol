@@ -128,7 +128,7 @@ public class EnemySpawner : MonoBehaviour
 
         //setting parameters
         newWave.SetEnemiesToSpawn(currNumb);
-        newWave.SetTimeSpawn( currWaveNumber*0.2f , 0.1f);
+        newWave.SetTimeSpawn( currWaveNumber*0.3f , 0.1f);
         //Debug.Log(enemyPrefabsList[1] + " comes here ");
         newWave.SetEnemyPrefabs(enemyPrefabsList);
         newWave.SetBossEnemyPrefab(bossPrefab);

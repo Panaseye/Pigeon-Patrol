@@ -156,7 +156,7 @@ public class ShopManager : MonoBehaviour
     public void UpdateBalloonCost(int newCost)
     {
         balloonCost=newCost;
-        balloonCostText.text = "Cost: " + balloonCost;
+        balloonCostText.text = "Cost: " + balloonCost + " feathers";
     }
 
     void InitBalloon()
@@ -174,7 +174,7 @@ public class ShopManager : MonoBehaviour
     public void UpdateRepairCost(int newCost)
     {
         houseRepairCost = newCost;
-        repairCostText.text = "Cost: "+ houseRepairCost;
+        repairCostText.text = "Cost: "+ houseRepairCost + " feathers";
     }
 
     void InitHouseRepair()
@@ -193,7 +193,7 @@ public class ShopManager : MonoBehaviour
         ResetUpgrades();
         houseScript.houseProtection = 1f;
         maxUpgradeLevel = upgradeCosts.Count;
-        upgradeCostText.text = "Cost: "+ upgradeCosts[currUpgradeLevel];
+        upgradeCostText.text = "Cost: "+ upgradeCosts[currUpgradeLevel]+ " feathers";
         upgradeLevelText.text = "Upgrade Level: "+currUpgradeLevel;
     }
 
