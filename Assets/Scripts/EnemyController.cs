@@ -126,7 +126,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         enemyHealth -= damageAmount;
-        Debug.Log("taken damage");
+        //Debug.Log("taken damage");
         if(enemyHealth<=0)
         {
             house.PigeonDead();

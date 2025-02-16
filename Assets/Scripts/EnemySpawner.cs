@@ -16,7 +16,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<GameObject> enemyPrefabsList;
     [SerializeField] GameObject bossPrefab;
 
-    int startNumb=5;
+
+    int startNumb=3;
     int currNumb;
     int currWaveNumber = 1;
     int bossWave=0;
@@ -59,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
 
 
                     GameObject enemyPrefab = currWave.GetEnemyPrefabAt(Random.Range(0,currWave.GetEnemyPrefabs().Count))    ;
-                    Debug.Log("ranmdom spawn pos " + GetRandomSpawnPos());
+                   // Debug.Log("ranmdom spawn pos " + GetRandomSpawnPos());
                     
                     //with a 50-50 probability, change the enemy prefab to boss prefab
                     
@@ -128,7 +129,7 @@ public class EnemySpawner : MonoBehaviour
 
         //setting parameters
         newWave.SetEnemiesToSpawn(currNumb);
-        newWave.SetTimeSpawn( currWaveNumber*0.3f , 0.1f);
+        newWave.SetTimeSpawn( currWaveNumber*0.1f , 0.05f);
         //Debug.Log(enemyPrefabsList[1] + " comes here ");
         newWave.SetEnemyPrefabs(enemyPrefabsList);
         newWave.SetBossEnemyPrefab(bossPrefab);
